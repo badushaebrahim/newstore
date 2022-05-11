@@ -48,6 +48,23 @@ app.post('/login', (req, res) => {
 
 
 
+app.post('/register', (req, res) => {
+	const { name, password,email } = req.body;
+	connection.query('INSERT INTO users (name,email, password) VALUES (?, ?)', [name,email, password], (err, results) => {
+		if (err) {
+			var status= {status: "success"};
+			//res.send(err);
+		} else {
+			res.send(results);
+		}
+	}
+	);
+}
+);
+
+
+
+
 
 
 
